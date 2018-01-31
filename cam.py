@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import math
 
-human_cascade = cv2.CascadeClassifier("cascadeH5.xml")	
+
 
 cap = cv2.VideoCapture(0)
 frameRate = cap.get(5)
@@ -18,14 +18,11 @@ while(True):
 		strng = "images/img1_"+str(int(frameId))+".jpg"
 		cv2.imwrite(strng,gray)
 			
-	heads = human_cascade.detectMultiScale(gray,1.3,5)	
-	for(x,y,w,h) in heads :
-		img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-		roi_gray = gray[y:y+h,x:x+w]
-		roi_color = img[y:y+h,x:x+w]
-	cv2.imshow('frame',gray)
+		
+
+	#cv2.imshow('img',img)
     # Display the resulting frame
-	#cv2.imshow('frame',gray)
+	cv2.imshow('frame',gray)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
 
